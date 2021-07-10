@@ -30,8 +30,6 @@ public class AService {
         final B b = new B(List.of(new B.C2(c)));
         final A a = new A(List.of(c), List.of(b));
 
-        a.getCs().forEach(definition -> template.save(definition));
-        a.getBs().forEach(definition -> template.save(definition));
         template.save(a);
 
         final Optional<Map<String, Object>> one = client.query("Match (n{id:'att'})-[r]-(m:A) return count(r)").fetch().one();
